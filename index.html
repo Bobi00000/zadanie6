@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Калькулятор стоимости услуги</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="calc">
+    <h1>Калькулятор стоимости услуги</h1>
+
+    <form id="calc-form" novalidate>
+      <div class="field">
+        <label for="quantity">Количество</label>
+        <input type="number" id="quantity" name="quantity" value="1" min="1" step="1" inputmode="numeric">
+        <p class="error" id="quantity-error" role="alert" hidden>Введите целое число не меньше 1.</p>
+      </div>
+
+      <fieldset class="field">
+        <legend>Тип услуги</legend>
+        <label class="choice">
+          <input type="radio" name="service" value="basic" checked>
+          Базовый — 1 000 ₽
+        </label>
+        <label class="choice">
+          <input type="radio" name="service" value="standard">
+          Стандарт — 1 500 ₽
+        </label>
+        <label class="choice">
+          <input type="radio" name="service" value="premium">
+          Премиум — 2 500 ₽
+        </label>
+      </fieldset>
+
+      <div class="field" id="options-block" hidden>
+        <label for="options">Срок выполнения</label>
+        <select id="options" name="options">
+          <option value="normal">Обычный (+0 ₽)</option>
+          <option value="fast">Ускоренный (+500 ₽)</option>
+          <option value="urgent">Срочный (+1 000 ₽)</option>
+        </select>
+      </div>
+
+      <div class="field" id="property-block" hidden>
+        <label class="choice">
+          <input type="checkbox" id="property" name="property">
+          Персональный менеджер (+700 ₽)
+        </label>
+      </div>
+    </form>
+
+    <p class="result" aria-live="polite">
+      Стоимость: <output id="price" for="quantity options property">1 000 ₽</output>
+    </p>
+  </main>
+</body>
+</html>
